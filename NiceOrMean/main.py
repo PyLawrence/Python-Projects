@@ -1,5 +1,9 @@
 import winsound
 
+# winsound is a windows only audio library to play sounds
+# I did try to use a few other libraries, but I was unsuccessful
+# I was going to just grab the ffmpeg library then hook into it, but this was easier.
+
 
 def reset(nice, mean, name):
     nice = 0
