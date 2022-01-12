@@ -21,12 +21,21 @@ def createGui(self):
     self.txt_title.grid(row=1, column=0, rowspan=1, padx=(30, 40), pady=(0, 0), sticky=N + W)
 
     self.text = tk.Text(self.master, height=25, width=80)
-    self.scroll = tk.Scrollbar(self.master)
-    self.text.configure(yscrollcommand=self.scroll.set)
+
+    # does have to be above the text.configure as it is used in the parameters
+    self.scrolly = tk.Scrollbar(self.master)
+    # not worth the trouble -_-
+    # self.scrollx = tk.Scrollbar(self.master)
+    self.text.configure(yscrollcommand=self.scrolly.set)
     self.text.grid(row=3, column=0, padx=(27, 0), pady=(10, 0), sticky=E + W, columnspan=5)
 
-    self.scroll.config(command=self.text.yview)
-    self.scroll.grid(sticky=E + N + S, column=5, row=3, pady=(10, 0))
+
+    self.scrolly.config(command=self.text.yview)
+    self.scrolly.grid(sticky=E + N + S, column=5, row=3, pady=(10, 0))
+
+    # not worth the trouble -_-
+    # self.scrollx.config(command=self.text.xview)
+    # self.scrollx.grid(sticky=E + W + S, column=5, row=2, pady=(10, 0))
 
     self.btn_new = tk.Button(self.master, width=15, height=2, text='New Webpage', command=lambda: commands.newPage(self))
     self.btn_new.grid(row=8, column=2, padx=(25, 0), pady=(45, 10), sticky=W)
