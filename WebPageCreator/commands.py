@@ -13,10 +13,12 @@ def openWebPage(self):
             self.webPageRef = temp
             self.TitleRef = temp.Title
             self.BodyRef = temp.Body
+            self.updateTitle()
             self.txt_title.delete(0, "end")
             self.txt_title.insert(0, temp.Title)
             self.text.delete("1.0", "end")
             self.text.insert("1.0", temp.Body)
+
 
 
     return None
@@ -39,6 +41,7 @@ def newPage(self):
     self.txt_title.insert(0, temp.Title)
     self.text.delete("1.0", "end")
     self.text.insert("1.0", temp.Body)
+    self.master.title = self.webPageRef.fileName
 
 def openInBrowser(self):
     os.startfile(self.webPageRef.fileName)

@@ -30,11 +30,14 @@ class WebPage:
     # these setup methods should only get called by this class
     def __setupNewPage(self):
         file = asksaveasfile(mode='w', defaultextension=".html")
-        file.close()
-        if file.name is not None:
-            with open(file.name, "w") as f:
-                f.write(self.defaultPage)
-            self.fileName = file.name
+        if file is not None:
+            if file.name is not None:
+                file.close()
+                with open(file.name, "w") as f:
+                    f.write(self.defaultPage)
+                self.fileName = file.name
+            else:
+                return
         else:
             return
 

@@ -25,14 +25,18 @@ class ParentWindow(Frame):
         self.master.geometry("700x600")
 
         self.master.resizable(False, False)
-        self.master.title("Test")
+        self.master.title("WebPageCreator")
         self.master.configure(bg="#F0F0F0")
-
-        # self.master.protocol("WM_DELETE_WINDOW", lambda: func.ask_quit(self))
-        arg = self.master
 
 
         gui.createGui(self)
+
+    def updateTitle(self):
+        # would get errors if I directly called with the webpageref
+        # not 100% sure why, but this fixes it
+        tempVar = self.webPageRef.fileName
+        self.master.title(tempVar)
+
 
 
 if __name__ == "__main__":
